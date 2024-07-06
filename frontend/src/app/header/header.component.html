@@ -1,0 +1,10 @@
+<header class="header">
+    <div class="search-bar">
+        <span class="material-icons">search</span>
+        <input type="text" placeholder="Search" [(ngModel)]="searchTerm" (input)="onSearchChange()" >
+    </div>
+    <div class="user-info">
+        <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745" alt="User Avatar">
+        <span>{{adminname}}</span>
+    </div>
+</header>

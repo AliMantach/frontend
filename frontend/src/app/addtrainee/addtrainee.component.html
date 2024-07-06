@@ -1,0 +1,29 @@
+<div class="container">
+    <app-side-nav></app-side-nav>
+    <div class="main-content">
+        <app-header></app-header>
+        <main>
+            <div class="form-container">
+                <h2>Add New Contact</h2>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="name" placeholder="Kevin" [(ngModel)]="trainee.name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="jaskolski.brent@yahoo.com" [(ngModel)]="trainee.email">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phone" placeholder="546-933-2772" [(ngModel)]="trainee.phone">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">subscriptionType</label>
+                    <input type="text" id="subscriptionType" name="subscriptionType" placeholder="Fleming" [(ngModel)]="trainee.subscriptionType">
+                </div>
+                <button class="btn" (click)="addTrainee(trainee)">Add Now</button>
+            </div>
+        </main>
+    </div>
+</div>
+

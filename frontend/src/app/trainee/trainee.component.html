@@ -1,0 +1,66 @@
+<div class="container">
+    <app-side-nav></app-side-nav>
+    <div class="main-content">
+        <app-header></app-header>
+        <main>
+            <section class="favorites">
+                <h2>Trainees</h2>
+                <div class="trainee-grid">
+                    <ng-container *ngIf="filteredTrainees && filteredTrainees.length > 0; else noFilter">
+                        <div class="trainee-card" *ngFor="let trainee of filteredTrainees">
+                            <img src="https://deadline.com/wp-content/uploads/2023/02/ana-de-armas.jpg?w=1024" alt="Trainee Image">
+                            <div class="trainee-info">
+                                <h3>{{ trainee.name }}</h3>
+                                <p class="status" [ngClass]="{'active': status, 'inactive': !status}">
+                                    {{ status ? 'Active' : 'Inactive' }}
+                                </p>
+                                <br>
+                                <button class="edit-button">Edit Trainee</button>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <ng-template #noFilter>
+                        <div class="trainee-card" *ngFor="let trainee of trainees">
+                            <img src="https://deadline.com/wp-content/uploads/2023/02/ana-de-armas.jpg?w=1024" alt="Trainee Image">
+                            <div class="trainee-info">
+                                <h3>{{ trainee.name }}</h3>
+                                <p class="status" [ngClass]="{'active': status, 'inactive': !status}">
+                                    {{ status ? 'Active' : 'Inactive' }}
+                                </p>
+                                <br>
+                                <button class="edit-button" (click)="selectTrainee(trainee)">Edit Trainee</button>
+                            </div>
+
+                            <div *ngIf="selectedTrainee === trainee" class="edit-container">
+                                <h3>Edit Trainee</h3>
+                                <form #traineeForm="ngForm" (ngSubmit)="updateTrainee(selectedTrainee)">
+                                  <label>
+                                    Name:
+                                    <input [(ngModel)]="selectedTrainee.name" name="name" required />
+                                  </label>
+                                  <label>
+                                    Email:
+                                    <input [(ngModel)]="selectedTrainee.email" name="email" required />
+                                  </label>
+                                  <label>
+                                    Phone:
+                                    <input [(ngModel)]="selectedTrainee.phone" name="phone" required />
+                                  </label>
+                                  <label>
+                                    Subscription:
+                                    <input [(ngModel)]="selectedTrainee.subscriptionType" name="phone" required />
+                                  </label>
+                                  <button type="submit">Update</button>
+                                  <button type="button" (click)="deleteTrainee(selectedTrainee._id!)" class="delete-button">Delete</button>
+                                  <button type="button" (click)="cancel()" class="cancel-button">Cancel</button>
+                                </form>
+                                </div>
+                        </div>                    
+                    </ng-template>
+
+                </div>
+            </section>
+        </main>
+    </div>
+</div>

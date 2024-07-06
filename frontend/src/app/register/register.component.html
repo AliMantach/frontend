@@ -1,0 +1,28 @@
+<div class="login-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="register()">
+      <div class="form-group">
+          <label for="Username">Username</label>
+          <input type="text" id="Username" [(ngModel)]="username" name="Username" required>
+        </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required>
+    </div>
+    <div class="form-group ">
+      <label class="lbladmin"for="isAdmin">Is Admin</label>
+      <input type="checkbox" id="isAdmin" [(ngModel)]="isAdmin" name="isAdmin">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>
+<div class="navigation-link">
+  <p>Already have an account? <a (click)="gotologin()">Login here</a></p>
+</div>

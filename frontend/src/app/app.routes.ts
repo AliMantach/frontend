@@ -1,0 +1,20 @@
+import { Routes } from '@angular/router';
+import { TraineeComponent } from './trainee/trainee.component';
+import { LoginComponent } from './login/login.component';
+import { authGuard } from './services/auth.guard';
+import { AddtraineeComponent } from './addtrainee/addtrainee.component';
+import { RegisterComponent } from './register/register.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
+import { PaymentComponent } from './payment/payment.component';
+
+
+export const routes: Routes = [
+  { path: 'trainee', component: TraineeComponent,canActivate:[authGuard]},
+  { path: 'addtrainee', component: AddtraineeComponent,canActivate:[authGuard]},
+  { path: 'subscription', component: SubscriptionComponent,canActivate:[authGuard]},
+  { path: 'payment', component: PaymentComponent,canActivate:[authGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  { path: '', redirectTo: '/trainee', pathMatch: 'full' },
+  { path: '**', redirectTo: '/trainee' }
+];

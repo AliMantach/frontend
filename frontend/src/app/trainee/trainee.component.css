@@ -1,0 +1,135 @@
+/* Main Content Styles */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .user-info {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+
+  .product-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Main Section Styles */
+main {
+  padding: 20px;
+  flex: 1;
+}
+
+.favorites {
+  max-width: 1200px;
+  margin: auto;
+}
+img{
+  border-radius: 3%;
+}
+
+.favorites h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.trainee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.trainee-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trainee-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.trainee-info {
+  text-align: center;
+}
+
+.trainee-info h3 {
+  font-size: 22px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.trainee-info .price {
+  font-size: 20px;
+  color: #007bff;
+  margin: 10px 0;
+}
+.status {
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 5%;
+}
+
+.status.active {
+  color: white;
+  background-color: green;
+}
+
+.status.inactive {
+  color: white;
+  background-color: red;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.ratings .material-icons {
+  color: #ffc107;
+  font-size: 20px;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
