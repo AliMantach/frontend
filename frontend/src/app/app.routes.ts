@@ -9,12 +9,12 @@ import { PaymentComponent } from './payment/payment.component';
 
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'trainee', component: TraineeComponent,canActivate:[authGuard]},
   { path: 'addtrainee', component: AddtraineeComponent,canActivate:[authGuard]},
   { path: 'subscription', component: SubscriptionComponent,canActivate:[authGuard]},
-  { path: 'payment', component: PaymentComponent,canActivate:[authGuard]},
+  { path: 'payments', component: PaymentComponent,canActivate:[authGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  { path: '', redirectTo: '/trainee', pathMatch: 'full' },
-  { path: '**', redirectTo: '/trainee' }
+  { path: '**', redirectTo: '/login' }
 ];

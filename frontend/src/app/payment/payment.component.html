@@ -1,10 +1,72 @@
-<div class="container">
-    <app-side-nav></app-side-nav>
-    <div class="main-content">
-        <app-header></app-header>
-        <main>
-           
-        </main>
-    </div>
-</div>
+<!-- payment.component.html -->
 
+<div class="container">
+  <app-side-nav></app-side-nav>
+  <div class="main-content">
+    <app-header></app-header>
+    <main>
+      <div class="payment-container">
+        <h2>Payments</h2>
+
+        <!-- Display list of payments -->
+        <ul class="payment-list">
+          <li *ngFor="let payment of payments" (click)="selectPayment(payment)">
+            {{ payment.amount }} {{ payment.currency }} - {{ payment.paymentMethod }} - {{ payment.status }}
+          </li>
+        </ul>
+
+        <!-- Edit selected payment -->
+        <div *ngIf="selectedPayment" class="edit-container">
+          <h3>Edit Payment</h3>
+          <form >
+            <label>
+              Amount:
+              <input [(ngModel)]="selectedPayment.amount" name="amount" />
+            </label>
+            <label>
+              Currency:
+              <input [(ngModel)]="selectedPayment.currency" name="currency" />
+            </label>
+            <label>
+              Payment Method:
+              <input [(ngModel)]="selectedPayment.paymentMethod" name="paymentMethod" />
+            </label>
+            <label>
+              Status:
+              <input [(ngModel)]="selectedPayment.status" name="status" />
+            </label>
+            <button type="submit" (click)="updatePayment(selectedPayment)">Update</button>
+            <button type="button"  class="delete-button">Delete</button>
+            <button type="button" (click)="cancel()" class="cancel-button">Cancel</button>
+          </form>
+        </div>
+
+        <!-- Add new payment -->
+        <h3>Add New Payment</h3>
+        <form #paymentForm="ngForm" (ngSubmit)="addPayment()" class="add-form">
+          <label>
+            PayerId:
+            <input [(ngModel)]="newPayment.payerId" name="amount" required />
+          </label>
+          <label>
+            Amount:
+            <input [(ngModel)]="newPayment.amount" name="amount" required />
+          </label>
+          <label>
+            Currency:
+            <input [(ngModel)]="newPayment.currency" name="currency" required />
+          </label>
+          <label>
+            Payment Method:
+            <input [(ngModel)]="newPayment.paymentMethod" name="paymentMethod" required />
+          </label>
+          <label>
+            Status:
+            <input [(ngModel)]="newPayment.status" name="status" required />
+          </label>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>

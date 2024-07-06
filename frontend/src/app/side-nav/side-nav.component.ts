@@ -21,7 +21,7 @@ export class SideNavComponent {
     this.router.navigate(['/subscription'])
    }
    toPayment(){
-    this.router.navigate(['/payment'])
+    this.router.navigate(['/payments'])
    }
    toAdmin(){
     this.router.navigate(['/admin'])
