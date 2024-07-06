@@ -26,17 +26,23 @@ export class PaymentComponent implements OnInit {
     paymentMethod: '',
     status: 'Pending',
   };
+    payerIdFilter: string = '';
 
   constructor(private paymentService: PaymentService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loadPayments();
+   this.loadPayments();
   }
 
   loadPayments(): void {
-    this.paymentService.getPayments().subscribe((payments: Payment[]) => {
-      this.payments = payments;
-    });
+    this.paymentService.getPayments().subscribe(
+      payments => {
+        this.payments = payments;
+      }
+    )}
+
+  applyFilter(): void {
+    this.loadPayments();
   }
 
   selectPayment(payment: Payment): void {

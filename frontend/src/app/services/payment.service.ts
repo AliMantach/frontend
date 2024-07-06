@@ -1,7 +1,7 @@
 
 
 import { Injectable } from '@angular/core';
-import { HttpClient , HttpHeaders } from '@angular/common/http';
+import { HttpClient , HttpHeaders , HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Payment } from '../modules/interface_payment';
@@ -30,6 +30,10 @@ export class PaymentService {
 
   getPayments(): Observable<Payment[]> {
     return this.http.get<Payment[]>(`${this.apiUrl}`, this.getAuthHeaders())
+  }
+
+  getPaymentsByPayerId(payerId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/${payerId}`);
   }
 
   private getAuthHeaders() {
