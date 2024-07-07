@@ -1,0 +1,53 @@
+
+<div class="container">
+    <app-side-nav></app-side-nav>
+    <div class="main-content">
+      <app-header></app-header>
+      <main>
+      
+        <div class="admin-container">
+          <h2>Admins</h2>
+  
+          <!-- Display list of admins -->
+          <ul class="admin-list">
+            <li *ngFor="let admin of admins" (click)="selectAdmin(admin)">
+              {{ admin.username }} - {{ admin.email }}
+            </li>
+          </ul>
+  
+          <!-- Edit selected admin -->
+          <div *ngIf="selectedAdmin" class="edit-container">
+            <h3>Edit Admin</h3>
+            <form (ngSubmit)="updateAdmin()">
+              <label>
+                Username:
+                <input [(ngModel)]="selectedAdmin.username" name="username" required />
+              </label>
+              <label>
+                Email:
+                <input [(ngModel)]="selectedAdmin.email" name="email" required />
+              </label>
+              <label>
+                Password:
+                <input [(ngModel)]="selectedAdmin.password" name="password" type="password" />
+              </label>
+              <label>
+                Is Admin:
+                <input type="checkbox" [(ngModel)]="selectedAdmin.isAdmin" name="isAdmin" />
+              </label>
+              <label>
+                Is Super Admin:
+                <input type="checkbox" [(ngModel)]="selectedAdmin.isSuperAdmin" name="isSuperAdmin" />
+              </label>
+              <div class="button-group">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="button" (click)="deleteAdmin(selectedAdmin._id)" class="btn btn-danger">Delete</button>
+                <button type="button" (click)="cancelSelection()" class="btn btn-secondary">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  
